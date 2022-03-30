@@ -3,9 +3,6 @@ package com.lamaatech.mockitodemo;
 public class MyBusinessImpl {
 	DataService dataService ;
 	
-	public MyBusinessImpl() {
-		
-	}
  	
 	public MyBusinessImpl(DataService service) {
 		dataService = service;
