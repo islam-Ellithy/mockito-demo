@@ -5,19 +5,27 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 class MyBusinessImplTest {
 
+	@Mock
+	DataService dataServiceMock;
+	
+	@InjectMocks
+	MyBusinessImpl service;
+	
 	@Test
 	void test() {
 		
 		
-		DataService dataServiceMock = mock(DataService.class);
 		
 		when(dataServiceMock.retrieveAllData()).thenReturn(new int[] {5,10,20});
-
-		
-		MyBusinessImpl service = new MyBusinessImpl(dataServiceMock);
 		
 		
 		int result = service.findTheGreatest();
@@ -35,12 +43,8 @@ class MyBusinessImplTest {
 	void testOneValue() {
 		
 		
-		DataService dataServiceMock = mock(DataService.class);
 		
 		when(dataServiceMock.retrieveAllData()).thenReturn(new int[] {5});
-
-		
-		MyBusinessImpl service = new MyBusinessImpl(dataServiceMock);
 		
 		
 		int result = service.findTheGreatest();
